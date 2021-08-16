@@ -1,5 +1,15 @@
+import { useState } from 'react';
 import Item from './Item';
 export default function Form() {
+  const [dataArr, setDataArr] = useState([
+    {
+      text: 'jordan',
+    },
+    { text: 'jordy' },
+    { text: 'kevin' },
+    { text: 'kevin' },
+    { text: 'kevin' },
+  ]);
   return (
     <div className='mb-4  md:flex-col justify-center items-center'>
       <form className='mb-3'>
@@ -18,10 +28,9 @@ export default function Form() {
       </form>
       <h2>Liste des choses à faire : </h2>
       <ul>
-        <Item />
-        <Item />
-        <Item />
-        <Item />
+        {dataArr.map((item, index) => {
+          return <Item text={item.text} index={index} />;
+        })}
       </ul>
     </div>
   );
