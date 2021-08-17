@@ -36,7 +36,11 @@ export default function Form() {
       <h2>Liste des choses à faire : </h2>
       <ul>
         {dataArr.map((item) => {
-          return <Item deleteTask={deleteTask} text={item.text} id={item.id} />;
+          return (
+            <div key={item.id}>
+              <Item deleteTask={deleteTask} text={item.text} id={item.id} />
+            </div>
+          );
         })}
       </ul>
     </div>
