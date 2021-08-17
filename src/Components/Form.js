@@ -3,13 +3,20 @@ import Item from './Item';
 export default function Form() {
   const [dataArr, setDataArr] = useState([
     {
+      id: 1,
       text: 'jordan',
     },
-    { text: 'jordy' },
-    { text: 'kevin' },
-    { text: 'kevin' },
-    { text: 'kevin' },
+    { id: 2, text: 'jordy' },
+    { id: 3, text: 'kevin' },
+    { id: 4, text: 'kevin' },
+    { id: 5, text: 'kevin' },
   ]);
+
+  const deleteTask = (id) => {
+    const taskDelete = dataArr.filter((d) => d.id !== id);
+    setDataArr(taskDelete);
+  };
+
   return (
     <div className='mb-4  md:flex-col justify-center items-center'>
       <form className='mb-3'>
@@ -28,8 +35,8 @@ export default function Form() {
       </form>
       <h2>Liste des choses à faire : </h2>
       <ul>
-        {dataArr.map((item, index) => {
-          return <Item text={item.text} index={index} />;
+        {dataArr.map((item) => {
+          return <Item deleteTask={deleteTask} text={item.text} id={item.id} />;
         })}
       </ul>
     </div>
